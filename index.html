@@ -3,21 +3,623 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Slash Consulting</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Black Slash - Your Global Partner in Growth</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Avenir', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(122, 149, 176, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .logo-container {
+            max-width: 400px;
+            margin: 0 auto 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slash-icon {
+            width: 120px;
+            height: auto;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            font-family: 'Georgia', 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #7A95B0;
+            margin-bottom: 40px;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        /* Services Grid */
+        .services-intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-intro h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            color: #2E3E54;
+            margin-bottom: 20px;
+        }
+
+        .market-flows {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .flow-card {
+            background: white;
+            border: 2px solid #2E3E54;
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .flow-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 62, 84, 0.15);
+        }
+
+        .flow-card h3 {
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            color: #2E3E54;
+            margin-bottom: 15px;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #7A95B0;
+            margin: 20px 0;
+        }
+
+        .destinations {
+            color: #7A95B0;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Packages */
+        .packages-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .package-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(46, 62, 84, 0.15);
+        }
+
+        .package-card h3 {
+            font-family: 'Georgia', serif;
+            color: #2E3E54;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 2rem;
+            color: #7A95B0;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .package-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .deliverables {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .deliverables li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .deliverables li:last-child {
+            border-bottom: none;
+        }
+
+        .timeline {
+            background: #f0f4f8;
+            padding: 10px 15px;
+            border-radius: 4px;
+            color: #2E3E54;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* Featured Package */
+        .featured {
+            border: 3px solid #2E3E54;
+            position: relative;
+        }
+
+        .featured::before {
+            content: 'MOST COMPREHENSIVE';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2E3E54;
+            color: white;
+            padding: 5px 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+
+        /* Registration Services Section */
+        .registration-section {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .registration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            background: #f8f9fa;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 40px auto 0;
+            align-items: center;
+        }
+
+        .partner-placeholder {
+            background: white;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .partner-placeholder:hover {
+            border-color: #7A95B0;
+            color: #7A95B0;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a {
+            color: #7A95B0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #000000;
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Service Details */
+        .service-details {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .service-details h4 {
+            color: #2E3E54;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .service-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-details ul li {
+            padding: 5px 0;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .service-details ul li::before {
+            content: "✓ ";
+            color: #7A95B0;
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .pricing-model {
+            background: #e8f0f8;
+            padding: 12px;
+            border-radius: 4px;
+            margin: 15px 0;
+            font-size: 0.9rem;
+            color: #2E3E54;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-intro h2,
+            .contact-section h2 {
+                font-size: 2rem;
+            }
+
+            .packages-grid,
+            .registration-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Black Slash Consulting</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Our Services</h2>
-            <p>We offer a variety of consulting services to help your business grow.</p>
-        </section>
-    </main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="logo-container">
+            <img src="Black_and_White_Retro_Vintage_Minimalist_Trendy_Logo-3.png" alt="Black Slash Logo" class="slash-icon">
+            <h1>BLACK SLASH</h1>
+            <p class="tagline">Your Global Partner in Growth</p>
+        </div>
+        <div class="hero-description">
+            <p>Strategic market entry consulting for companies expanding between the United States, Europe, Middle East, India, and the United Kingdom. We bridge markets, navigate complexities, and accelerate your global growth.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="container">
+        <div class="services-intro">
+            <h2>Market Entry Expertise</h2>
+            <p style="color: #666; font-size: 1.1rem;">We specialize in bi-directional market entry strategies</p>
+        </div>
+
+        <div class="market-flows">
+            <div class="flow-card">
+                <h3>US Companies</h3>
+                <div class="arrow">→</div>
+                <div class="destinations">European Union<br>Middle East<br>India<br>United Kingdom</div>
+            </div>
+
+            <div class="flow-card">
+                <h3>European & Bulgarian Companies</h3>
+                <div class="arrow">→</div>
+                <div class="destinations">United States Market</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages-section">
+        <div class="container">
+            <div class="services-intro">
+                <h2>Consulting Packages</h2>
+            </div>
+
+            <div class="packages-grid">
+                <!-- Package 1 -->
+                <div class="package-card">
+                    <h3>Market Scan</h3>
+                    <p>Quick analysis of target market(s), identifying opportunities, key competitors, and entry barriers.</p>
+                    <div class="price">$5,000</div>
+                    <ul class="deliverables">
+                        <li>1–2 page actionable report</li>
+                        <li>Key recommendations</li>
+                    </ul>
+                    <div class="timeline">⏱ Timeline: 1–2 weeks</div>
+                </div>
+
+                <!-- Package 2 -->
+                <div class="package-card">
+                    <h3>Small Marketing Strategy</h3>
+                    <p>Focused marketing strategy for one product or region. Includes target audience, channels, and positioning recommendations.</p>
+                    <div class="price">$7,500</div>
+                    <ul class="deliverables">
+                        <li>5–10 page report</li>
+                        <li>Suggested action plan</li>
+                        <li>Optional 30-min strategy call</li>
+                    </ul>
+                    <div class="timeline">⏱ Timeline: 2–3 weeks</div>
+                </div>
+
+                <!-- Package 3 - Featured -->
+                <div class="package-card featured">
+                    <h3>Full Market Entry Blueprint</h3>
+                    <p>End-to-end market entry strategy for U.S., Europe, Middle East, India, or UK. Includes competitive analysis, distribution channels, regulatory overview, and actionable roadmap.</p>
+                    <div class="price">$20,000–$30,000</div>
+                    <ul class="deliverables">
+                        <li>15–25 page comprehensive report</li>
+                        <li>Market contacts list</li>
+                        <li>Introduction plan</li>
+                        <li>Step-by-step launch roadmap</li>
+                    </ul>
+                    <div class="timeline">⏱ Timeline: 4–6 weeks</div>
+                </div>
+
+                <!-- Package 4 -->
+                <div class="package-card">
+                    <h3>Ongoing Retainer</h3>
+                    <p>Continuous support for executing strategy, managing local contacts, regulatory guidance, and troubleshooting.</p>
+                    <div class="price">$3,000–$7,000<span style="font-size: 1rem;">/month</span></div>
+                    <ul class="deliverables">
+                        <li>Weekly update calls</li>
+                        <li>Actionable guidance</li>
+                        <li>Introductions</li>
+                        <li>Continuous market insights</li>
+                    </ul>
+                    <div class="timeline">⏱ Monthly ongoing</div>
+                </div>
+
+                <!-- Package 5 - NEW -->
+                <div class="package-card">
+                    <h3>International Strategic Deal Origination</h3>
+                    <div class="pricing-model">Retainer + Success Fee</div>
+                    <p>We identify, initiate, and facilitate strategic deals between companies across international markets, including the United States, Europe, and the Middle East.</p>
+                    
+                    <div class="service-details">
+                        <h4>Services include:</h4>
+                        <ul>
+                            <li>Identifying strategic partnership opportunities</li>
+                            <li>Executive-level introductions between companies</li>
+                            <li>Negotiation support and deal facilitation</li>
+                            <li>Cross-border partnership structuring</li>
+                            <li>Strategic alignment and commercial opportunity assessment</li>
+                        </ul>
+                    </div>
+
+                    <div class="price">$4,000–$8,000<span style="font-size: 1rem;">/month</span></div>
+                    <div style="color: #7A95B0; font-weight: 600; margin-top: 10px;">+ Success Fee: 3%–7% of deal value</div>
+                </div>
+
+                <!-- Package 6 - NEW -->
+                <div class="package-card">
+                    <h3>Strategic Partnerships</h3>
+                    <div class="pricing-model">Project-Based or Monthly Retainer</div>
+                    <p>We help companies build and develop long-term strategic partnerships to accelerate growth and expand into new markets.</p>
+                    
+                    <div class="service-details">
+                        <h4>Services include:</h4>
+                        <ul>
+                            <li>Partnership strategy development</li>
+                            <li>Partner identification and evaluation</li>
+                            <li>Market positioning and collaboration strategy</li>
+                            <li>Negotiation support</li>
+                            <li>Partnership launch roadmap</li>
+                        </ul>
+                    </div>
+
+                    <div class="price">$3,000–$18,000</div>
+                    <ul class="deliverables">
+                        <li>Partner research</li>
+                        <li>Outreach strategy</li>
+                        <li>Negotiation framework</li>
+                        <li>Partnership roadmap</li>
+                        <li>Closing the deal</li>
+                    </ul>
+                    <div class="timeline">⏱ Per project</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration & Compliance Section -->
+    <section class="registration-section">
+        <div class="container">
+            <div class="services-intro">
+                <h2>Registration & Compliance Services</h2>
+                <p style="color: #666; font-size: 1.1rem;">Expert assistance with international company formation and regulatory compliance</p>
+            </div>
+
+            <div class="registration-grid">
+                <!-- UK Registration -->
+                <div class="package-card">
+                    <h3>UK Registration & Compliance</h3>
+                    <p>Comprehensive support for company registration and regulatory compliance in the United Kingdom.</p>
+                    <div class="price">$2,500–$5,000</div>
+                    <ul class="deliverables">
+                        <li>Registration documents</li>
+                        <li>Compliance guidance</li>
+                        <li>Local compliance overview</li>
+                        <li>Ongoing regulatory support</li>
+                    </ul>
+                    <div class="timeline">⏱ Timeline: 1–4 weeks</div>
+                </div>
+
+                <!-- Bulgaria Registration -->
+                <div class="package-card">
+                    <h3>Bulgaria Registration & Compliance</h3>
+                    <p>Full-service company registration and compliance assistance in Bulgaria, ideal for EU market access.</p>
+                    <div class="price">$1,500</div>
+                    <ul class="deliverables">
+                        <li>Registration documents</li>
+                        <li>Compliance guidance</li>
+                        <li>Local compliance overview</li>
+                        <li>EU market access support</li>
+                    </ul>
+                    <div class="timeline">⏱ Timeline: 1–4 weeks</div>
+                </div>
+
+                <!-- Delaware Registration -->
+                <div class="package-card">
+                    <h3>Delaware Registration & Compliance</h3>
+                    <p>Expert guidance for US company formation in Delaware, the preferred jurisdiction for international businesses.</p>
+                    <div class="price">$3,000</div>
+                    <ul class="deliverables">
+                        <li>Registration documents</li>
+                        <li>Compliance guidance</li>
+                        <li>Annual filing support</li>
+                        <li>US market entry assistance</li>
+                    </ul>
+                    <div class="timeline">⏱ Timeline: 1–4 weeks</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners-section">
+        <div class="container">
+            <div class="services-intro">
+                <h2>Our Partners</h2>
+                <p style="color: #666; font-size: 1.1rem;">Trusted collaborations that drive global success</p>
+            </div>
+
+            <div class="partners-grid">
+                <div class="partner-placeholder">Partner Logo</div>
+                <div class="partner-placeholder">Partner Logo</div>
+                <div class="partner-placeholder">Partner Logo</div>
+                <div class="partner-placeholder">Partner Logo</div>
+                <div class="partner-placeholder">Partner Logo</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Let's Talk About Your Global Expansion</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <strong>Martina Stanev</strong>
+            </div>
+            <div class="contact-item">
+                📧 <a href="mailto:contact@blackslash.cc">contact@blackslash.cc</a>
+            </div>
+            <div class="contact-item">
+                📍 New York, USA
+            </div>
+            <div class="contact-item" style="margin-top: 40px; color: #7A95B0;">
+                Custom packages available upon request to meet specific business needs and regions.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>Contact us at info@blackslash.com</p>
+        <p>&copy; 2026 Black Slash Consulting. All rights reserved.</p>
     </footer>
 </body>
 </html>
