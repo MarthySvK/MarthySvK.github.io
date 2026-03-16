@@ -4,43 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reports</title>
-    <script src="https://unpkg.com/@supabase/supabase-js@2.0.0/dist/umd/supabase.js"></script>
-    <script>
-        const supabase = supabase.createClient('https://uhgfekvfjetzypqzxxpr.supabase.co', 'sb_publishable_k32vrl72uDT8-UCE3Yeh_w_wrwzs-n0');
-
-        async function submitForm(event) {
-            event.preventDefault();
-
-            const formData = new FormData(event.target);
-            const fullName = formData.get('fullName');
-            const email = formData.get('email');
-            const company = formData.get('company');
-            const phone = formData.get('phone');
-            const reportId = formData.get('reportId');
-            const timestamp = new Date().toISOString();
-            const downloadCount = 0;
-
-            const { data, error } = await supabase
-                .from('email_signups')
-                .insert([{ fullName, email, company, phone, reportId, timestamp, downloadCount }]);
-
-            if (error) {
-                console.error('Error:', error);
-            } else {
-                console.log('Success:', data);
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Reports</h1>
-    <form onsubmit="submitForm(event)">
-        <input type="text" name="fullName" placeholder="Full Name" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="text" name="company" placeholder="Company"><br>
-        <input type="text" name="phone" placeholder="Phone"><br>
-        <input type="text" name="reportId" placeholder="Report ID" required><br>
-        <button type="submit">Submit</button>
-    </form>
+    <header>
+        <h1>Luxury Reports</h1>
+        <nav>
+            <ul>
+                <li><a href="#report1">Report 1</a></li>
+                <li><a href="#report2">Report 2</a></li>
+                <li><a href="#report3">Report 3</a></li>
+                <li><a href="#report4">Report 4</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="report1">
+            <h2>Report 1</h2>
+            <p>Details about report 1.</p>
+        </section>
+        <section id="report2">
+            <h2>Report 2</h2>
+            <p>Details about report 2.</p>
+        </section>
+        <section id="report3">
+            <h2>Report 3</h2>
+            <p>Details about report 3.</p>
+        </section>
+        <section id="report4">
+            <h2>Report 4</h2>
+            <p>Details about report 4.</p>
+        </section>
+    </main>
+    <footer>
+        <h3>Email Gating Form</h3>
+        <form id="email-gate">
+            <label for="email">Enter your email:</label>
+            <input type="email" id="email" name="email" required>
+            <button type="submit">Submit</button>
+        </form>
+    </footer>
+    <script src="supabase.js"></script>
+    <script>
+        // Supabase integration code
+        const { createClient } = supabase;
+        const supabaseUrl = 'https://your-supabase-url.supabase.co';
+        const supabaseKey = 'your-supabase-key';
+        const supabase = createClient(supabaseUrl, supabaseKey);
+
+        document.getElementById('email-gate').onsubmit = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const { data, error } = await supabase
+                .from('emails')
+                .insert([{ email }]);
+            if (error) console.error('Error:', error);
+            else alert('Email submitted!');
+        };
+    </script>
 </body>
 </html>
